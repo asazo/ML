@@ -140,8 +140,9 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{Tarea \# 1 Máquinas de Aprendizaje}
-    	\author{Rafik Mas'ad\\Alejandro Sazo}
+    \title{Tarea 1 Máquinas de Aprendizaje}
+    \author{Rafik Mas'ad\\Alejandro Sazo}
+    
     
     
 
@@ -275,10 +276,10 @@
     
 
     
-    \section{Tarea 1 Máquinas de
-Aprendizaje}\label{tarea-1-muxe1quinas-de-aprendizaje}
+%    \section{Tarea 1 Máquinas de
+%Aprendizaje}\label{tarea-1-muxe1quinas-de-aprendizaje}
 
-    \subsection{Ejercicio 1}\label{ejercicio-1}
+    \section{Ejercicio 1}\label{ejercicio-1}
 
     \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
@@ -294,7 +295,7 @@ Aprendizaje}\label{tarea-1-muxe1quinas-de-aprendizaje}
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
         \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
         
         \PY{n}{url} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{http://statweb.stanford.edu/\PYZti{}tibs/ElemStatLearn/datasets/prostate.data}\PY{l+s+s1}{\PYZsq{}}
@@ -320,7 +321,7 @@ Aprendizaje}\label{tarea-1-muxe1quinas-de-aprendizaje}
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{df}\PY{o}{.}\PY{n}{shape}
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{df}\PY{o}{.}\PY{n}{shape}
         \PY{n}{df}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{p}{)}
         \PY{n}{df}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
@@ -344,7 +345,7 @@ memory usage: 7.6 KB
     \end{Verbatim}
 
             \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}2}]:}           lcavol    lweight        age       lbph        svi        lcp  \textbackslash{}
+{\color{outcolor}Out[{\color{outcolor}6}]:}           lcavol    lweight        age       lbph        svi        lcp  \textbackslash{}
         count  97.000000  97.000000  97.000000  97.000000  97.000000  97.000000   
         mean    1.350010   3.628943  63.865979   0.100356   0.216495  -0.179366   
         std     1.178625   0.428411   7.445117   1.450807   0.413995   1.398250   
@@ -381,7 +382,7 @@ memory usage: 7.6 KB
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.preprocessing} \PY{k+kn}{import} \PY{n}{StandardScaler}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.preprocessing} \PY{k+kn}{import} \PY{n}{StandardScaler}
         \PY{c+c1}{\PYZsh{} Por defecto centra y escala la data.}
         \PY{n}{scaler} \PY{o}{=} \PY{n}{StandardScaler}\PY{p}{(}\PY{n}{with\PYZus{}mean}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{with\PYZus{}std}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
         \PY{n}{df\PYZus{}scaled} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{scaler}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{df}\PY{p}{)}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{n}{df}\PY{o}{.}\PY{n}{columns}\PY{p}{)}
@@ -403,23 +404,23 @@ memory usage: 7.6 KB
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{k+kn}{import} \PY{n+nn}{sklearn.linear\PYZus{}model} \PY{k+kn}{as} \PY{n+nn}{lm}
-        \PY{n}{X} \PY{o}{=} \PY{n}{df\PYZus{}scaled}\PY{o}{.}\PY{n}{ix}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
-        \PY{c+c1}{\PYZsh{} Agregamos la columna de bias con 1}
-        \PY{n}{N} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
-        \PY{n}{X}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{intercept}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{} Obtener los datos de output conocidos y extraer test \PYZam{} training set}
-        \PY{n}{y} \PY{o}{=} \PY{n}{df\PYZus{}scaled}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lpsa}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
-        \PY{n}{Xtrain} \PY{o}{=} \PY{n}{X}\PY{p}{[}\PY{n}{istrain}\PY{p}{]}
-        \PY{n}{ytrain} \PY{o}{=} \PY{n}{y}\PY{p}{[}\PY{n}{istrain}\PY{p}{]}
-        \PY{n}{Xtest} \PY{o}{=} \PY{n}{X}\PY{p}{[}\PY{n}{istest}\PY{p}{]}
-        \PY{n}{ytest} \PY{o}{=} \PY{n}{y}\PY{p}{[}\PY{n}{istest}\PY{p}{]}
-        \PY{n}{linreg} \PY{o}{=} \PY{n}{lm}\PY{o}{.}\PY{n}{LinearRegression}\PY{p}{(}\PY{n}{fit\PYZus{}intercept}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}
-        \PY{n}{linreg}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{Xtrain}\PY{p}{,} \PY{n}{ytrain}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k+kn}{import} \PY{n+nn}{sklearn.linear\PYZus{}model} \PY{k+kn}{as} \PY{n+nn}{lm}
+         \PY{n}{X} \PY{o}{=} \PY{n}{df\PYZus{}scaled}\PY{o}{.}\PY{n}{ix}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+         \PY{c+c1}{\PYZsh{} Agregamos la columna de bias con 1}
+         \PY{n}{N} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+         \PY{n}{X}\PY{o}{.}\PY{n}{insert}\PY{p}{(}\PY{n}{X}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{intercept}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} Obtener los datos de output conocidos y extraer test \PYZam{} training set}
+         \PY{n}{y} \PY{o}{=} \PY{n}{df\PYZus{}scaled}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lpsa}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{Xtrain} \PY{o}{=} \PY{n}{X}\PY{p}{[}\PY{n}{istrain}\PY{p}{]}
+         \PY{n}{ytrain} \PY{o}{=} \PY{n}{y}\PY{p}{[}\PY{n}{istrain}\PY{p}{]}
+         \PY{n}{Xtest} \PY{o}{=} \PY{n}{X}\PY{p}{[}\PY{n}{istest}\PY{p}{]}
+         \PY{n}{ytest} \PY{o}{=} \PY{n}{y}\PY{p}{[}\PY{n}{istest}\PY{p}{]}
+         \PY{n}{linreg} \PY{o}{=} \PY{n}{lm}\PY{o}{.}\PY{n}{LinearRegression}\PY{p}{(}\PY{n}{fit\PYZus{}intercept}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{)}
+         \PY{n}{linreg}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{Xtrain}\PY{p}{,} \PY{n}{ytrain}\PY{p}{)}
 \end{Verbatim}
 
             \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}4}]:} LinearRegression(copy\_X=True, fit\_intercept=False, n\_jobs=1, normalize=False)
+{\color{outcolor}Out[{\color{outcolor}10}]:} LinearRegression(copy\_X=True, fit\_intercept=False, n\_jobs=1, normalize=False)
 \end{Verbatim}
         
     \begin{enumerate}
@@ -437,28 +438,28 @@ memory usage: 7.6 KB
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} Correlacion entre variables}
-        \PY{c+c1}{\PYZsh{} print Xtrain.drop(\PYZsq{}intercept\PYZsq{}, axis=1).corr()}
-        
-        \PY{c+c1}{\PYZsh{} Tabla con coefficientes y sus Z\PYZhy{}score}
-        \PY{n}{coeffs} \PY{o}{=} \PY{n}{linreg}\PY{o}{.}\PY{n}{coef\PYZus{}}
-        \PY{n}{Table} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{coeffs}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{X}\PY{o}{.}\PY{n}{columns}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coefficent}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
-        \PY{n}{Table}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Std. Error}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{Xtrain}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{Xtrain}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
-        \PY{n}{Table}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Z\PYZhy{}score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{Table}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coefficent}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{div}\PY{p}{(}\PY{n}{Table}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Std. Error}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
-        \PY{n}{Table}
+{\color{incolor}In [{\color{incolor}11}]:} \PY{c+c1}{\PYZsh{} Correlacion entre variables}
+         \PY{c+c1}{\PYZsh{} print Xtrain.drop(\PYZsq{}intercept\PYZsq{}, axis=1).corr()}
+         
+         \PY{c+c1}{\PYZsh{} Tabla con coefficientes y sus Z\PYZhy{}score}
+         \PY{n}{coeffs} \PY{o}{=} \PY{n}{linreg}\PY{o}{.}\PY{n}{coef\PYZus{}}
+         \PY{n}{Table} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{coeffs}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{X}\PY{o}{.}\PY{n}{columns}\PY{p}{,} \PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coefficent}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+         \PY{n}{Table}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Std. Error}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{Xtrain}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{p}{)} \PY{o}{/} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n}{Xtrain}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+         \PY{n}{Table}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Z\PYZhy{}score}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{Table}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Coefficent}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{div}\PY{p}{(}\PY{n}{Table}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Std. Error}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}
+         \PY{n}{Table}
 \end{Verbatim}
 
             \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}5}]:}            Coefficent  Std. Error   Z-score
-        lcavol       0.676016    0.129469  5.221460
-        lweight      0.261694    0.136618  1.915519
-        age         -0.140734    0.123746 -1.137281
-        lbph         0.209061    0.123892  1.687447
-        svi          0.303623    0.124582  2.437133
-        lcp         -0.287002    0.123022 -2.332923
-        gleason     -0.021195    0.120547 -0.175822
-        pgg45        0.265576    0.127584  2.081583
-        intercept    2.464933    0.000000       inf
+{\color{outcolor}Out[{\color{outcolor}11}]:}            Coefficent  Std. Error   Z-score
+         lcavol       0.676016    0.129469  5.221460
+         lweight      0.261694    0.136618  1.915519
+         age         -0.140734    0.123746 -1.137281
+         lbph         0.209061    0.123892  1.687447
+         svi          0.303623    0.124582  2.437133
+         lcp         -0.287002    0.123022 -2.332923
+         gleason     -0.021195    0.120547 -0.175822
+         pgg45        0.265576    0.127584  2.081583
+         intercept    2.464933    0.000000       inf
 \end{Verbatim}
         
     \begin{enumerate}
@@ -477,30 +478,34 @@ memory usage: 7.6 KB
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} Predecir en el testing set}
-        \PY{n}{yhat\PYZus{}test} \PY{o}{=} \PY{n}{linreg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{Xtest}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{} Calcular error cuadrático medio en el testing set}
-        \PY{n}{mse\PYZus{}test} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{yhat\PYZus{}test} \PY{o}{\PYZhy{}} \PY{n}{ytest}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
-        \PY{k}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{MSE para testing set:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{mse\PYZus{}test}
-        \PY{k+kn}{from} \PY{n+nn}{sklearn} \PY{k+kn}{import} \PY{n}{cross\PYZus{}validation}
-        \PY{n}{Xm} \PY{o}{=} \PY{n}{Xtrain}\PY{o}{.}\PY{n}{as\PYZus{}matrix}\PY{p}{(}\PY{p}{)}
-        \PY{n}{ym} \PY{o}{=} \PY{n}{ytrain}\PY{o}{.}\PY{n}{as\PYZus{}matrix}\PY{p}{(}\PY{p}{)}
-        \PY{c+c1}{\PYZsh{} Definir numero de folds}
-        \PY{n}{n\PYZus{}folds} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{]}
-        \PY{c+c1}{\PYZsh{} Estimar error con 5 y 10 folds}
-        \PY{k}{for} \PY{n}{nf} \PY{o+ow}{in} \PY{n}{n\PYZus{}folds}\PY{p}{:}
-            \PY{n}{k\PYZus{}fold} \PY{o}{=} \PY{n}{cross\PYZus{}validation}\PY{o}{.}\PY{n}{KFold}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{Xm}\PY{p}{)}\PY{p}{,} \PY{n}{nf}\PY{p}{)}
-            \PY{c+c1}{\PYZsh{} MSE para cross validation}
-            \PY{n}{mse\PYZus{}cv} \PY{o}{=} \PY{l+m+mi}{0}
-            \PY{k}{for} \PY{n}{k}\PY{p}{,} \PY{p}{(}\PY{n}{train}\PY{p}{,} \PY{n}{val}\PY{p}{)} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{k\PYZus{}fold}\PY{p}{)}\PY{p}{:}
-                \PY{n}{linreg} \PY{o}{=} \PY{n}{lm}\PY{o}{.}\PY{n}{LinearRegression}\PY{p}{(}\PY{n}{fit\PYZus{}intercept} \PY{o}{=} \PY{n+nb+bp}{False}\PY{p}{)}
-                \PY{c+c1}{\PYZsh{} Modelar con el subconjunto del training set dado por el fold}
-                \PY{n}{linreg}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{Xm}\PY{p}{[}\PY{n}{train}\PY{p}{]}\PY{p}{,} \PY{n}{ym}\PY{p}{[}\PY{n}{train}\PY{p}{]}\PY{p}{)}
-                \PY{n}{yhat\PYZus{}val} \PY{o}{=} \PY{n}{linreg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{Xm}\PY{p}{[}\PY{n}{val}\PY{p}{]}\PY{p}{)}
-                \PY{n}{mse\PYZus{}fold} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{yhat\PYZus{}val} \PY{o}{\PYZhy{}} \PY{n}{ym}\PY{p}{[}\PY{n}{val}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
-                \PY{n}{mse\PYZus{}cv} \PY{o}{+}\PY{o}{=} \PY{n}{mse\PYZus{}fold}
-            \PY{n}{mse\PYZus{}cv} \PY{o}{=} \PY{n}{mse\PYZus{}cv} \PY{o}{/} \PY{n}{nf}
-            \PY{k}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{MSE para}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{nf}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{folds:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{mse\PYZus{}cv}
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} Predecir en el testing set y training set}
+         \PY{n}{yhat\PYZus{}test} \PY{o}{=} \PY{n}{linreg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{Xtest}\PY{p}{)}
+         \PY{n}{yhat\PYZus{}train} \PY{o}{=} \PY{n}{linreg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{Xtrain}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} Calcular error cuadrático medio en el testing set}
+         \PY{n}{mse\PYZus{}test} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{yhat\PYZus{}test} \PY{o}{\PYZhy{}} \PY{n}{ytest}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+         \PY{k}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{MSE para testing set:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{mse\PYZus{}test}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn} \PY{k+kn}{import} \PY{n}{cross\PYZus{}validation}
+         \PY{n}{Xm} \PY{o}{=} \PY{n}{Xtrain}\PY{o}{.}\PY{n}{as\PYZus{}matrix}\PY{p}{(}\PY{p}{)}
+         \PY{n}{ym} \PY{o}{=} \PY{n}{ytrain}\PY{o}{.}\PY{n}{as\PYZus{}matrix}\PY{p}{(}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} Definir numero de folds}
+         \PY{n}{n\PYZus{}folds} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{]}
+         \PY{c+c1}{\PYZsh{} Estimar error con 5 y 10 folds}
+         \PY{k}{for} \PY{n}{nf} \PY{o+ow}{in} \PY{n}{n\PYZus{}folds}\PY{p}{:}
+             \PY{n}{k\PYZus{}fold} \PY{o}{=} \PY{n}{cross\PYZus{}validation}\PY{o}{.}\PY{n}{KFold}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{Xm}\PY{p}{)}\PY{p}{,} \PY{n}{nf}\PY{p}{)}
+             \PY{c+c1}{\PYZsh{} MSE para cross validation}
+             \PY{n}{mse\PYZus{}cv} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{k}{for} \PY{n}{k}\PY{p}{,} \PY{p}{(}\PY{n}{train}\PY{p}{,} \PY{n}{val}\PY{p}{)} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{k\PYZus{}fold}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{linreg} \PY{o}{=} \PY{n}{lm}\PY{o}{.}\PY{n}{LinearRegression}\PY{p}{(}\PY{n}{fit\PYZus{}intercept} \PY{o}{=} \PY{n+nb+bp}{False}\PY{p}{)}
+                 \PY{c+c1}{\PYZsh{} Modelar con el subconjunto del training set dado por el fold}
+                 \PY{n}{linreg}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{Xm}\PY{p}{[}\PY{n}{train}\PY{p}{]}\PY{p}{,} \PY{n}{ym}\PY{p}{[}\PY{n}{train}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{yhat\PYZus{}val} \PY{o}{=} \PY{n}{linreg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{Xm}\PY{p}{[}\PY{n}{val}\PY{p}{]}\PY{p}{)}
+                 \PY{n}{mse\PYZus{}fold} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{power}\PY{p}{(}\PY{n}{yhat\PYZus{}val} \PY{o}{\PYZhy{}} \PY{n}{ym}\PY{p}{[}\PY{n}{val}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+                 \PY{n}{mse\PYZus{}cv} \PY{o}{+}\PY{o}{=} \PY{n}{mse\PYZus{}fold}
+                 
+                 
+             \PY{n}{mse\PYZus{}cv} \PY{o}{=} \PY{n}{mse\PYZus{}cv} \PY{o}{/} \PY{n}{nf}
+             \PY{k}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{MSE para}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{nf}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{folds:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{mse\PYZus{}cv}
 \end{Verbatim}
 
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -515,31 +520,37 @@ MSE para 10 folds: 0.757237472963
 \setcounter{enumi}{9}
 \itemsep1pt\parskip0pt\parsep0pt
 \item
-  QQ Plot para error de prueba. Podemos observar que \(R^2 = 0.9537\),
+  QQ Plot para error de prueba. Podemos observar que \(R^2 = 0.9902\),
   lo que indica una alta correlación entre los datos de predicción, por
   lo que es razonable suponer que los residuos se distribuyen de forma
   normal.
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
-        \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
-        \PY{k+kn}{import} \PY{n+nn}{scipy.stats} \PY{k+kn}{as} \PY{n+nn}{stats}
-        \PY{n}{residual} \PY{o}{=} \PY{n}{yhat\PYZus{}test} \PY{o}{\PYZhy{}} \PY{n}{ytest}
-        \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
-        \PY{n}{stats}\PY{o}{.}\PY{n}{probplot}\PY{p}{(}\PY{n}{residual}\PY{p}{,} \PY{n}{dist}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{norm}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{plot}\PY{o}{=}\PY{n}{plt}\PY{p}{)}
-        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Q\PYZhy{}Q Plot}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Quantiles}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Residuos}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-        \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}23}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+         \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+         \PY{k+kn}{import} \PY{n+nn}{scipy.stats} \PY{k+kn}{as} \PY{n+nn}{stats}
+         \PY{n}{residual} \PY{o}{=} \PY{n}{yhat\PYZus{}train} \PY{o}{\PYZhy{}} \PY{n}{ytrain}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         \PY{n}{d1}\PY{p}{,} \PY{n}{d2} \PY{o}{=} \PY{n}{stats}\PY{o}{.}\PY{n}{probplot}\PY{p}{(}\PY{n}{residual}\PY{p}{,} \PY{n}{dist}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{norm}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{plot}\PY{o}{=}\PY{n}{plt}\PY{p}{)}
+         \PY{k}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{R\PYZca{}2=}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{d2}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Q\PYZhy{}Q Plot}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Quantiles}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Residuos}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
+    \begin{Verbatim}[commandchars=\\\{\}]
+R\^{}2= 0.990277677828
+
+    \end{Verbatim}
+
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{tarea1_files/tarea1_15_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{tarea1_files/tarea1_15_1.png}
     \end{center}
     { \hspace*{\fill} \\}
     
-    \subsection{Ejercicio 2}\label{ejercicio-2}
+    \section{Ejercicio 2}\label{ejercicio-2}
 
     \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
@@ -772,7 +783,7 @@ totalvars=2, best R\^{}2 = 0.537516
     \end{center}
     { \hspace*{\fill} \\}
     
-    \subsection{Ejercicio 3}\label{ejercicio-3}
+    \section{Ejercicio 3}\label{ejercicio-3}
 
     \begin{enumerate}
 \def\labelenumi{(\alph{enumi})}
@@ -788,6 +799,20 @@ totalvars=2, best R\^{}2 = 0.537516
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}10}]:} \PY{n}{X} \PY{o}{=} \PY{n}{X}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{intercept}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
+
+    \begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{1}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Ajuste un modelo lineal utilizando el método ``Lasso'', es decir,
+  regularizando con la norma L1. Utilice valores del parámetro de
+  regularización lambda en el rango \([10^1 , 10^{-2}]\). Para obtener
+  el codigo, modifique las lineas 7 y 9 del ejemplo anterior. Construya
+  un gráfico que muestre los coeficientes obtenidos como función del
+  parámetro de regularización. Describa lo que observa. ¿Es más efectivo
+  Lasso para seleccionar atributos?
+\end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}11}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.linear\PYZus{}model} \PY{k+kn}{import} \PY{n}{Ridge}
@@ -822,7 +847,7 @@ totalvars=2, best R\^{}2 = 0.537516
 \end{Verbatim}
 
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{tarea1_files/tarea1_24_0.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{tarea1_files/tarea1_25_0.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -830,20 +855,6 @@ totalvars=2, best R\^{}2 = 0.537516
 considerar variables (darles peso 0). El comportamiento se estabiliza,
 en este caso, en \(10^{-1}\) (se hizo experimentos con valores menores
 de alpha y es muy similar el resultado).
-
-    \begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
-\setcounter{enumi}{1}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  Ajuste un modelo lineal utilizando el método ``Lasso'', es decir,
-  regularizando con la norma L1. Utilice valores del parámetro de
-  regularización lambda en el rango \([10^1 , 10^{-2}]\). Para obtener
-  el código, modifique las líneas 7 y 9 del ejemplo anterior. Construya
-  un gráfico que muestre los coeficientes obtenidos como función del
-  parámetro de regularización. Describa lo que observa. ¿Es más efectivo
-  Lasso para seleccionar atributos?
-\end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor}12}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.linear\PYZus{}model} \PY{k+kn}{import} \PY{n}{Lasso}
@@ -1031,7 +1042,7 @@ BEST PARAMETER=0.010000, MSE(CV)=0.758661
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}16}]:} \PY{k+kn}{import} \PY{n+nn}{os.path}
+{\color{incolor}In [{\color{incolor}25}]:} \PY{k+kn}{import} \PY{n+nn}{os.path}
          \PY{n}{data\PYZus{}base\PYZus{}path} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{./data}\PY{l+s+s2}{\PYZdq{}}
          \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
          \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
@@ -1062,17 +1073,17 @@ manejable.
 \end{enumerate}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{X\PYZus{}train}\PY{o}{.}\PY{n}{get\PYZus{}shape}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{X\PYZus{}train}\PY{o}{.}\PY{n}{get\PYZus{}shape}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
             \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}17}]:} (1147, 145256)
+{\color{outcolor}Out[{\color{outcolor}26}]:} (1147, 145256)
 \end{Verbatim}
         
     Se observa que hay 1147 peliculas cada una con 145256 atributos.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}18}]:} \PY{c+c1}{\PYZsh{}from sklearn.preprocessing import StandardScaler}
+{\color{incolor}In [{\color{incolor}27}]:} \PY{c+c1}{\PYZsh{}from sklearn.preprocessing import StandardScaler}
          
          \PY{c+c1}{\PYZsh{}x\PYZus{}scaler = StandardScaler(with\PYZus{}mean=False)}
          
@@ -1083,7 +1094,7 @@ manejable.
     Se prueba escalar los datos pero esto devuelve peores resultados.
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}19}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.feature\PYZus{}selection} \PY{k+kn}{import} \PY{n}{SelectKBest}\PY{p}{,} \PY{n}{chi2}
+{\color{incolor}In [{\color{incolor}28}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.feature\PYZus{}selection} \PY{k+kn}{import} \PY{n}{SelectKBest}\PY{p}{,} \PY{n}{chi2}
          
          \PY{n}{ch2} \PY{o}{=} \PY{n}{SelectKBest}\PY{p}{(}\PY{n}{chi2}\PY{p}{,} \PY{n}{k}\PY{o}{=}\PY{l+m+mi}{29000}\PY{p}{)}
          
@@ -1203,6 +1214,8 @@ obtenidos anteriormente:
         \PY{k}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{R2=}\PY{l+s+si}{\PYZpc{}f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{model}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
 \end{Verbatim}
 
+    R2=0.608121
+
     Se obtienen el mejor resultado hasta el momento.
 
 A continuación en vez de realizar cross-validation se usa el conjunto de
@@ -1217,11 +1230,15 @@ validación (``dev'') y modificando los parametros manualmente:
         \PY{k}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{R2=}\PY{l+s+si}{\PYZpc{}f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{model}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{X\PYZus{}dev}\PY{p}{,} \PY{n}{y\PYZus{}dev}\PY{p}{)}
 \end{Verbatim}
 
+    R2=0.605732
+
     Dando:
 
     \begin{Verbatim}[commandchars=\\\{\}]
 {\color{incolor}In [{\color{incolor} }]:} \PY{k}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{R2=}\PY{l+s+si}{\PYZpc{}f}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{model}\PY{o}{.}\PY{n}{score}\PY{p}{(}\PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}test}\PY{p}{)}
 \end{Verbatim}
+
+    R2=0.634180
 
     Cabe mencionar que se probo con tecnicas como Grid Search y Randomized
 Parameter Optimization pero sus tiempos de computo fueron excesivos.
