@@ -48,12 +48,12 @@ def load_CIFAR10(PATH, n_val=10000):
     return Xtr, Ytr, Xval, Yval, Xte, Yte
 
 
-# In[23]:
+# In[3]:
 
 Xtr, Ytr, Xval, Yval, Xte, Yte = load_CIFAR10('.')
 
 
-# In[26]:
+# In[4]:
 
 from keras.utils.np_utils import to_categorical
 from sklearn.preprocessing import StandardScaler
@@ -99,16 +99,17 @@ plt.imshow(sample, interpolation="nearest")
 plt.show()"""
 
 
-# In[24]:
+# In[5]:
 
 from keras.utils.np_utils import to_categorical
 from sklearn.preprocessing import StandardScaler
 from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import SGD
+from keras.models import load_model
 
 
-# In[28]:
+# In[6]:
 
 Xtr, Xval, Xte = scaler_function(Xtr, Xval, Xte, other=False)
 Ytr_cat = to_categorical(Ytr, 10)
@@ -116,7 +117,7 @@ Yval_cat = to_categorical(Yval, 10)
 Yte_cat = to_categorical(Yte, 10)
 
 
-# In[31]:
+# In[7]:
 
 model = Sequential()
 model.add(Dense(100, input_dim=Xtr.shape[1], init='uniform', activation='relu'))
@@ -124,13 +125,25 @@ model.add(Dropout(0.1))
 model.add(Dense(10, init='uniform', activation='softmax'))
 model.compile(optimizer=SGD(lr=0.05), loss='binary_crossentropy', metrics=['accuracy'])
 model.fit(Xtr, Ytr_cat, nb_epoch=50, batch_size=32, verbose=1, validation_data=(Xval,Yval_cat))
-scores = model.evaluate(Xval, Yval_cat)
-print scores
+model.save('arch_1.h5')
+del model
 
-scores = model.evaluate(Xte, Yte_cat)
-print scores
+model = Sequential()
+model.add(Dense(200, input_dim=Xtr.shape[1], init='uniform', activation='relu'))
+model.add(Dense(100, init='uniform', activation='relu'))
+model.add(Dense(10, init='uniform', activation='softmax'))
+model.compile(optimizer=SGD(lr=0.1), loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(Xtr, Ytr_cat, nb_epoch=50, batch_size=32, verbose=1, validation_data=(Xval,Yval_cat))
+model.save('arch_2.h5')
+del model
 
-# In[ ]:
 
-
+model = Sequential()
+model.add(Dense(4000, input_dim=Xtr.shape[1], init='uniform', activation='relu'))
+model.add(Dense(2000, init='uniform', activation='relu'))
+model.add(Dense(10, init='uniform', activation='softmax'))
+model.compile(optimizer=SGD(lr=0.1), loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(Xtr, Ytr_cat, nb_epoch=50, batch_size=32, verbose=1, validation_data=(Xval,Yval_cat))
+model.save('arch_3.h5')
+del model
 
