@@ -119,31 +119,24 @@ Yte_cat = to_categorical(Yte, 10)
 
 # In[7]:
 
-model = Sequential()
+"""model = Sequential()
 model.add(Dense(100, input_dim=Xtr.shape[1], init='uniform', activation='relu'))
 model.add(Dropout(0.1))
 model.add(Dense(10, init='uniform', activation='softmax'))
 model.compile(optimizer=SGD(lr=0.05), loss='binary_crossentropy', metrics=['accuracy'])
 model.fit(Xtr, Ytr_cat, nb_epoch=50, batch_size=32, verbose=1, validation_data=(Xval,Yval_cat))
 model.save('arch_1.h5')
-del model
+del model"""
 
 model = Sequential()
 model.add(Dense(200, input_dim=Xtr.shape[1], init='uniform', activation='relu'))
-model.add(Dense(100, init='uniform', activation='relu'))
+model.add(Dropout(0.4))
+model.add(Dense(100, init='uniform', activation='sigmoid'))
+model.add(Dropout(0.4))
+model.add(Dense(50, init='uniform', activation='relu'))
+model.add(Dropout(0.4))
 model.add(Dense(10, init='uniform', activation='softmax'))
 model.compile(optimizer=SGD(lr=0.1), loss='binary_crossentropy', metrics=['accuracy'])
 model.fit(Xtr, Ytr_cat, nb_epoch=50, batch_size=32, verbose=1, validation_data=(Xval,Yval_cat))
-model.save('arch_2.h5')
-del model
-
-
-model = Sequential()
-model.add(Dense(4000, input_dim=Xtr.shape[1], init='uniform', activation='relu'))
-model.add(Dense(2000, init='uniform', activation='relu'))
-model.add(Dense(10, init='uniform', activation='softmax'))
-model.compile(optimizer=SGD(lr=0.1), loss='binary_crossentropy', metrics=['accuracy'])
-model.fit(Xtr, Ytr_cat, nb_epoch=50, batch_size=32, verbose=1, validation_data=(Xval,Yval_cat))
-model.save('arch_3.h5')
-del model
+model.save("arch_3.h5")
 
