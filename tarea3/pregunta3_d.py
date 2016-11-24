@@ -76,20 +76,8 @@ from top_level_features import hog_features
 from top_level_features import color_histogram_hsv
 from top_level_features import extract_features
 
-#Xtr, Ytr, Xval, Yval, Xte, Yte = load_CIFAR10('.')
-
-#features_Xtr = extract_features(Xtr,[hog_features, color_histogram_hsv])
-#features_Xval = extract_features(Xval,[hog_features, color_histogram_hsv])
-
-#Ytr_cat = to_categorical(Ytr, 10)
-#Yval_cat = to_categorical(Yval, 10)
-#Yte_cat = to_categorical(Yte, 10)
-
-from sklearn.svm import SVC
-
 Xtr, Ytr, Xval, Yval, Xte, Yte = load_CIFAR10('.')
-# Escalar datos
-#Xtr, Xval, Xte = scaler_function(Xtr, Xval, Xte, other=False)
+
 features_Xtr = extract_features(Xtr,[hog_features, color_histogram_hsv])
 features_Xval = extract_features(Xval,[hog_features, color_histogram_hsv])
 
@@ -97,47 +85,60 @@ Ytr_cat = to_categorical(Ytr, 10)
 Yval_cat = to_categorical(Yval, 10)
 Yte_cat = to_categorical(Yte, 10)
 
-C = np.logspace(-5, 3, 9)
-kernel = ['rbf','poly', 'sigmoid']
-print "Features All"
-for k in kernel:
-    for c in C:
-        print "Kernel %s"%k+", C=%.0e"%c
-        svm = SVC(kernel=k, C=c, verbose=False)
-        "Entrenando..."
-        svm.fit(features_Xtr, Ytr)
-        "Calculando score..."
-        score = svm.score(features_Xval, Yval)
-        print "Score sobre conjunto de validación:",score
-
-## Solo features hsv
-features_Xtr = extract_features(Xtr,[color_histogram_hsv])
-features_Xval = extract_features(Xval,[color_histogram_hsv])
-C = np.logspace(-5, 3, 9)
-kernel = ['rbf', 'poly', 'sigmoid']
-print "Features HSV"
-for k in kernel:
-    for c in C:
-        print "Kernel %s"%k+", C=%.0e"%c
-        svm = SVC(kernel=k, C=c, verbose=False)
-        "Entrenando..."
-        svm.fit(features_Xtr, Ytr)
-        "Calculando score..."
-        score = svm.score(features_Xval, Yval)
-        print "Score sobre conjunto de validación:",score
-
+model = Sequential()
+model.add(Dense(200, input_dim=features_Xtr.shape[1], init='uniform', activation='relu'))
+model.add(Dropout(0.4))
+model.add(Dense(100, init='uniform', activation='sigmoid'))
+model.add(Dropout(0.4))
+model.add(Dense(50, init='uniform', activation='relu'))
+model.add(Dropout(0.4))
+model.add(Dense(10, init='uniform', activation='softmax'))
+model.compile(optimizer=SGD(lr=0.1), loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(features_Xtr, Ytr_cat, nb_epoch=50, batch_size=32, verbose=1, validation_data=(features_Xval,Yval_cat))
+model.save("arch_3_ALL.h5")
 
 features_Xtr = extract_features(Xtr,[hog_features])
 features_Xval = extract_features(Xval,[hog_features])
-C = np.logspace(-5, 3, 9)
-kernel = ['rbf', 'poly', 'sigmoid']
-print "Features HOG"
-for k in kernel:
-    for c in C:
-        print "Kernel %s"%k+", C=%.0e"%c
-        svm = SVC(kernel=k, C=c, verbose=False)
-        "Entrenando..."
-        svm.fit(features_Xtr, Ytr)
-        "Calculando score..."
-        score = svm.score(features_Xval, Yval)
-        print "Score sobre conjunto de validación:",score
+
+model = Sequential()
+model.add(Dense(200, input_dim=features_Xtr.shape[1], init='uniform', activation='relu'))
+model.add(Dropout(0.4))
+model.add(Dense(100, init='uniform', activation='sigmoid'))
+model.add(Dropout(0.4))
+model.add(Dense(50, init='uniform', activation='relu'))
+model.add(Dropout(0.4))
+model.add(Dense(10, init='uniform', activation='softmax'))
+model.compile(optimizer=SGD(lr=0.1), loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(features_Xtr, Ytr_cat, nb_epoch=50, batch_size=32, verbose=1, validation_data=(features_Xval,Yval_cat))
+model.save("arch_3_HOG.h5")
+
+features_Xtr = extract_features(Xtr,[color_histogram_hsv])
+features_Xval = extract_features(Xval,[color_histogram_hsv])
+
+model = Sequential()
+model.add(Dense(200, input_dim=features_Xtr.shape[1], init='uniform', activation='relu'))
+model.add(Dropout(0.4))
+model.add(Dense(100, init='uniform', activation='sigmoid'))
+model.add(Dropout(0.4))
+model.add(Dense(50, init='uniform', activation='relu'))
+model.add(Dropout(0.4))
+model.add(Dense(10, init='uniform', activation='softmax'))
+model.compile(optimizer=SGD(lr=0.1), loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(features_Xtr, Ytr_cat, nb_epoch=50, batch_size=32, verbose=1, validation_data=(features_Xval,Yval_cat))
+model.save("arch_3_HSV.h5")
+
+
+features_Xval = extract_features(Xval,[hog_features, color_histogram_hsv])
+model = load_model("arch_3_ALL.h5")
+print "ALL:"
+print model.evaluate(features_Xval, Yval_cat)
+features_Xval = extract_features(Xval,[hog_features])
+model = load_model("arch_3_HOG.h5")
+print "HOG:"
+print model.evaluate(features_Xval, Yval_cat)
+
+features_Xval = extract_features(Xval,[color_histogram_hsv])
+model = load_model("arch_3_HSV.h5")
+print "HSV:"
+print model.evaluate(features_Xval, Yval_cat)
+

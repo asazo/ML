@@ -1,0 +1,181 @@
+(40000, 32, 32, 3)
+(10000, 32, 32, 3)
+Features All
+
+Kernel rbf, C=1e-05
+Score sobre conjunto de validación: 0.0952
+Kernel rbf, C=1e-04
+Score sobre conjunto de validación: 0.0952
+Kernel rbf, C=1e-03
+Score sobre conjunto de validación: 0.0952
+Kernel rbf, C=1e-02
+Score sobre conjunto de validación: 0.244
+Kernel rbf, C=1e-01
+Score sobre conjunto de validación: 0.3677
+Kernel rbf, C=1e+00
+Score sobre conjunto de validación: 0.5449
+Kernel rbf, C=1e+01
+Score sobre conjunto de validación: 0.5573
+Kernel rbf, C=1e+02
+Score sobre conjunto de validación: 0.5567
+Kernel rbf, C=1e+03
+Score sobre conjunto de validación: 0.5567
+
+Kernel poly, C=1e-05
+Score sobre conjunto de validación: 0.13
+Kernel poly, C=1e-04
+Score sobre conjunto de validación: 0.2677
+Kernel poly, C=1e-03
+Score sobre conjunto de validación: 0.4202
+Kernel poly, C=1e-02
+Score sobre conjunto de validación: 0.5225
+Kernel poly, C=1e-01
+Score sobre conjunto de validación: 0.5566
+Kernel poly, C=1e+00
+Score sobre conjunto de validación: 0.5542
+Kernel poly, C=1e+01
+Score sobre conjunto de validación: 0.5419
+Kernel poly, C=1e+02
+Score sobre conjunto de validación: 0.5313
+Kernel poly, C=1e+03
+Score sobre conjunto de validación: 0.5255
+
+Kernel sigmoid, C=1e-05
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-04
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-03
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-02
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-01
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e+00
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e+01
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e+02
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e+03
+Score sobre conjunto de validación: 0.0952
+
+(40000, 32, 32, 3)
+(10000, 32, 32, 3)
+Features HSV
+
+Kernel rbf, C=1e-05
+Score sobre conjunto de validación: 0.0952
+Kernel rbf, C=1e-04
+Score sobre conjunto de validación: 0.0952
+Kernel rbf, C=1e-03
+Score sobre conjunto de validación: 0.0952
+Kernel rbf, C=1e-02
+Score sobre conjunto de validación: 0.184
+Kernel rbf, C=1e-01
+Score sobre conjunto de validación: 0.2281
+Kernel rbf, C=1e+00
+Score sobre conjunto de validación: 0.2425
+Kernel rbf, C=1e+01
+Score sobre conjunto de validación: 0.2501
+Kernel rbf, C=1e+02
+Score sobre conjunto de validación: 0.2568
+Kernel rbf, C=1e+03
+Score sobre conjunto de validación: 0.2616
+
+Kernel poly, C=1e-05
+Score sobre conjunto de validación: 0.0952
+Kernel poly, C=1e-04
+Score sobre conjunto de validación: 0.0952
+Kernel poly, C=1e-03
+Score sobre conjunto de validación: 0.0952
+Kernel poly, C=1e-02
+Score sobre conjunto de validación: 0.0952
+Kernel poly, C=1e-01
+Score sobre conjunto de validación: 0.0952
+Kernel poly, C=1e+00
+Score sobre conjunto de validación: 0.0952
+Kernel poly, C=1e+01
+Score sobre conjunto de validación: 0.1727
+Kernel poly, C=1e+02
+Score sobre conjunto de validación: 0.2248
+Kernel poly, C=1e+03
+Score sobre conjunto de validación: 0.2501
+
+Kernel sigmoid, C=1e-05
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-04
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-03
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-02
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-01
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e+00
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e+01
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e+02
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e+03
+Score sobre conjunto de validación: 0.0952
+
+(40000, 32, 32, 3)
+(10000, 32, 32, 3)
+Features HOG
+Kernel rbf, C=1e-05
+Score sobre conjunto de validación: 0.0952
+Kernel rbf, C=1e-04
+Score sobre conjunto de validación: 0.0952
+Kernel rbf, C=1e-03
+Score sobre conjunto de validación: 0.0952
+Kernel rbf, C=1e-02
+Score sobre conjunto de validación: 0.1757
+Kernel rbf, C=1e-01
+Score sobre conjunto de validación: 0.3482
+Kernel rbf, C=1e+00
+Score sobre conjunto de validación: 0.5308
+Kernel rbf, C=1e+01
+Score sobre conjunto de validación: 0.5423
+Kernel rbf, C=1e+02
+Score sobre conjunto de validación: 0.5423
+Kernel rbf, C=1e+03
+Score sobre conjunto de validación: 0.5423
+
+Kernel poly, C=1e-05
+Score sobre conjunto de validación: 0.1366
+Kernel poly, C=1e-04
+Score sobre conjunto de validación: 0.2829
+Kernel poly, C=1e-03
+Score sobre conjunto de validación: 0.4309
+Kernel poly, C=1e-02
+Score sobre conjunto de validación: 0.5229
+Kernel poly, C=1e-01
+Score sobre conjunto de validación: 0.5476
+Kernel poly, C=1e+00
+Score sobre conjunto de validación: 0.5425
+Kernel poly, C=1e+01
+Score sobre conjunto de validación: 0.532
+Kernel poly, C=1e+02
+Score sobre conjunto de validación: 0.5216
+Kernel poly, C=1e+03
+Score sobre conjunto de validación: 0.5116
+
+Kernel sigmoid, C=1e+00
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-01
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-02
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-03
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-04
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e-05
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e+01
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e+02
+Score sobre conjunto de validación: 0.0952
+Kernel sigmoid, C=1e+03
+Score sobre conjunto de validación: 0.0952
