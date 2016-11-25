@@ -71,36 +71,6 @@ def scaler_function(Xtr,Xval,Xt,other=True, scale=True):
     return Xtr_scaled, Xval_scaled, Xt_scaled
 
 
-# In[5]:
-
-"""%matplotlib inline
-import matplotlib.pyplot as plt
-plt.figure(figsize=(1,1))
-sample = Xtr[12].reshape(3,32,32).T
-plt.imshow(sample, interpolation="nearest")
-plt.show()
-
-Xtr_scaled, Xt_scaled = scaler_function(Xtr, Xte, other=True)
-plt.figure(figsize=(1,1))
-sample = Xtr_scaled[12].reshape(3,32,32).T
-plt.imshow(sample, interpolation="nearest")
-plt.show()
-
-Xtr_scaled, Xt_scaled = scaler_function(Xtr.astype(np.float64), Xte.astype(np.float64), other=False, scale=False)
-plt.figure(figsize=(1,1))
-sample = Xtr_scaled[12].reshape(3,32,32).T
-plt.imshow(sample, interpolation="nearest")
-plt.show()
-
-Xtr_scaled, Xt_scaled = scaler_function(Xtr.astype(np.float64), Xte.astype(np.float64), other=False, scale=True)
-plt.figure(figsize=(1,1))
-sample = Xtr_scaled[12].reshape(3,32,32).T
-plt.imshow(sample, interpolation="nearest")
-plt.show()"""
-
-
-# In[5]:
-
 from keras.utils.np_utils import to_categorical
 from sklearn.preprocessing import StandardScaler
 from keras.models import Sequential
@@ -109,24 +79,21 @@ from keras.optimizers import SGD
 from keras.models import load_model
 
 
-# In[6]:
-
 Xtr, Xval, Xte = scaler_function(Xtr, Xval, Xte, other=False)
 Ytr_cat = to_categorical(Ytr, 10)
 Yval_cat = to_categorical(Yval, 10)
 Yte_cat = to_categorical(Yte, 10)
 
 
-# In[7]:
 
-"""model = Sequential()
+model = Sequential()
 model.add(Dense(100, input_dim=Xtr.shape[1], init='uniform', activation='relu'))
 model.add(Dropout(0.1))
 model.add(Dense(10, init='uniform', activation='softmax'))
 model.compile(optimizer=SGD(lr=0.05), loss='binary_crossentropy', metrics=['accuracy'])
 model.fit(Xtr, Ytr_cat, nb_epoch=50, batch_size=32, verbose=1, validation_data=(Xval,Yval_cat))
 model.save('arch_1.h5')
-del model"""
+del model
 
 model = Sequential()
 model.add(Dense(200, input_dim=Xtr.shape[1], init='uniform', activation='relu'))
